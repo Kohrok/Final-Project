@@ -53,26 +53,33 @@ public class Menu {
 	}
 	
 	public void displayCustomerMenu(){
-		System.out.println("Greetings. Please press which food item you'd like to buy. Press 0 to checkout.");
-		for (FoodItem fi : availableFoodItems){
+		int userChoice;
+		do {
+		System.out.println("Please press which food item you'd like to buy. Press 0 to checkout.");
+		
+		for (FoodItem fi : availableFoodItems){						//Print out the options
 			System.out.println(fi.getMenuRepresentation());
 		}
-		int userChoice = scan.nextInt();
-		addItem(userChoice);
 		
+		userChoice = scan.nextInt();								//Get their choice
+		} while (addItem(userChoice));
 		
+		checkout();
 	}
 	
-	public void addItem(int foodID) {
+	//Returns false if should checkout, true if should continue shopping
+	public boolean addItem(int foodID) {
 		
 		if (foodID > availableFoodItems.size()){
 			System.out.println("That's not a valid entry. Try again.");
+			return true;
 		}
 		else if (foodID < 1) {
-			checkout();
+		return false;
 		}
 		else {
 			availableFoodItems.get(foodID).purchase();
+			return true;
 		}
 		
 	}
