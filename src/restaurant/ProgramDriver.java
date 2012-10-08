@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class ProgramDriver {
 
+	private static Menu menu;
+	
 	/**
 	 * @param args
 	 */
@@ -11,7 +13,12 @@ public class ProgramDriver {
 		// TODO Auto-generated method stub
 
 		
+		menu = new Menu();
+		startProgram();
 		
+	}
+	
+	public static void startProgram(){
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please enter a username: ");
         String username = scan.nextLine();
@@ -20,15 +27,13 @@ public class ProgramDriver {
         int userID = scan.nextInt();
         
         User currentUser = new User(username, userID);
-        Menu menu = new Menu();		//May want this static once Owner comes into play
-        
+                
         if (currentUser.isOwner()){
         	menu.displayOwnerMenu();
         }
         else{
         	menu.displayCustomerMenu();
         }
-		
 	}
 
 }

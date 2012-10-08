@@ -8,7 +8,11 @@ public class FoodItem {
 	protected int foodID;
 	protected double price;
 	protected String notes;			//special requests for the item
+	protected boolean isAvailable;
 	
+	public FoodItem(){
+		isAvailable = true;
+	}
 	
 	public  String getName() {
 		return name;
@@ -34,6 +38,14 @@ public class FoodItem {
 		price = newPrice;
 	}
 
+	public boolean isAvailable(){
+		return isAvailable;
+	}
+	
+	public void setAvailable(boolean available){
+		isAvailable = available;
+	}
+	
 	//This handles any special requests regarding the foodItem (toppings, condiments, etc.)
 	public void purchase(){
 		
